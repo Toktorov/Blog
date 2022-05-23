@@ -1,0 +1,27 @@
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+  }
+a{
+    text-decoration: none;
+    color: #000;
+}
+a:hover{
+    text-decoration: none;
+    color: #000;
+}
+.btn-light{
+    margin-left: 5px;
+}
+.card{
+    margin-right: 15px;
+    margin-top: 10px;
+}
+.flex{
+    display: flex;
+}
+.card-body{
+    width: 600px;
+}
