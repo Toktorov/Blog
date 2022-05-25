@@ -8,3 +8,10 @@ def index(request):
         'posts' : posts,
     }
     return render(request, 'index.html', context)
+
+def post_detail(request, id):
+    post = Post.objects.get(id = id)
+    context = {
+        'post' : post
+    }
+    return render(request, 'blog_detail.html', context)

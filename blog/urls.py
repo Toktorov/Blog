@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts.views import index
+from posts.views import index, post_detail
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', index),
+    path('', index, name = "index"),
+    path('post/<int:id>', post_detail, name = "post_detail"),
     path('admin/', admin.site.urls),
 ]
 

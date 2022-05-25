@@ -56,34 +56,13 @@
       <!-- Alert end -->
       <!-- Detail Start -->
       <div class="container">
-        <h1 class="display-5 fw-bold">Blog title</h1>
+        <h1 class="display-5 fw-bold">{{ post.title }}</h1>
         <p class="my-4">
-            A footer is an additional navigation component. It can hold links, buttons, company info,
-            copyrights, forms, and many other elements.
+            {{ post.description }}
           </p>
-        <img src="assets/img/photo1.webp" class="img-fluid" alt="...">
+        <img src="{{ post.image.url }}" class="img-fluid" alt="...">
         <p>
-            The background color is set via CSS class
-            <code>.bg-light</code>. You can set your own color choosing from
-            <a href="/docs/standard/content-styles/colors/">MDB color palette</a>
-            or by setting a completely custom color via inline CSS, for example
-            The background color is set via CSS class
-            <code>.bg-light</code>. You can set your own color choosing from
-            <a href="/docs/standard/content-styles/colors/">MDB color palette</a>
-            or by setting a completely custom color via inline CSS, for example
-            The background color is set via CSS class
-            <code>.bg-light</code>. You can set your own color choosing from
-            <a href="/docs/standard/content-styles/colors/">MDB color palette</a>
-            or by setting a completely custom color via inline CSS, for example
-            The background color is set via CSS class
-            <code>.bg-light</code>. You can set your own color choosing from
-            <a href="/docs/standard/content-styles/colors/">MDB color palette</a>
-            or by setting a completely custom color via inline CSS, for example
-            The background color is set via CSS class
-            <code>.bg-light</code>. You can set your own color choosing from
-            <a href="/docs/standard/content-styles/colors/">MDB color palette</a>
-            or by setting a completely custom color via inline CSS, for example
-            <code>style="background-color: #9933CC;"</code>
+            {{ post.description }}
           </p>
           <div class="container">
             <div class="row">
