@@ -18,10 +18,12 @@ from django.urls import path
 from posts.views import index, post_detail
 from django.conf import settings
 from django.conf.urls.static import static
+from users.views import signup
 
 urlpatterns = [
     path('', index, name = "index"),
     path('post/<int:id>', post_detail, name = "post_detail"),
+    path('register/', signup, name = "signup"),
     path('admin/', admin.site.urls),
 ]
 

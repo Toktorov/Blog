@@ -59,40 +59,43 @@
       <!-- Register Form Start -->
       <div class="container">
           <div class="row">
-            <form>
-                
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
                 <h1 class="h3 mb-3 fw-normal">Зарегистрироваться</h1>
             
                 <div class="form-floating">
-                  <input type="first_name" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <input type="first_name" name = "last_name" class="form-control" id="floatingInput" placeholder="name@example.com">
                   <label for="floatingInput">Имя</label>
                 </div>
                 <div class="form-floating">
-                    <input type="last_name" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <input type="last_name" name = "first_name" class="form-control" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Фамилия</label>
                   </div>
                   <div class="form-floating">
-                    <input type="username" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <input type="username" name = "username" class="form-control" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Имя пользователя</label>
                   </div>
                   <div class="form-floating">
-                    <input type="date" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <input type="date" name = "date_of_birth" class="form-control" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Дата рождения</label>
                   </div>
                   <div class="form-floating">
-                    <input type="tel" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <input type="tel" name = "tel" class="form-control" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Телефонный номер</label>
                   </div>
-                <div class="form-floating">
-                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                  <label for="floatingPassword">Пароль</label>
-                </div>
-            
-                <div class="checkbox mb-3">
-                  <label>
-                    <input type="checkbox" value="remember-me"> Запомнить меня
-                  </label>
-                </div>
+                  <div class="form-floating">
+                    <input type="password" name = "password1" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Пароль</label>
+                  </div>
+                  <div class="form-floating">
+                    <input type="password" name = "password2" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Потвердите пароль</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlFile1">Example file input</label>
+                    <input type="file" name = "profile_image" class="form-control-file" id="exampleFormControlFile1">
+                  </div>
+                  
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Зарегистрироваться</button>
                 <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
               </form>
