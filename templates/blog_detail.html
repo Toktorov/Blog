@@ -66,8 +66,13 @@
           </p>
           <div class="container">
             <div class="row">
-              <a href="">1 человеку нонравилось</a>
-              <button class = "btn btn-outline-primary" style="margin-top: 18px;">Понравилось</button>
+              <a href="">{{ post.posts_post.all.count }} человеку нонравилось</a>
+              <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name = "like">
+                <button class = "btn btn-outline-primary"style="margin-top: 18px;">Понравилось</button>
+              </form>
+              
             </div>
           </div>
           <form class="row gy-2 gx-3 align-items-center" style="margin-top: 10px;">

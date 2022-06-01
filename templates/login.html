@@ -49,25 +49,22 @@
           <button type="button" class="btn btn-light">Зарегистрироваться</button>        </div>
           <button type="button" class="btn btn-light" style="margin-left: -5px;">Войти</button>        </div>
       </nav>
-      <!-- Navbar End -->
+      <!-- Navba`r End -->
       <!-- Login Form Start -->
       <div class="container">
       <div class="row">
-      <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Имя пользователя</label>
-          <input type="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Пароль</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Запомнить меня</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Войти</button>
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Username</label>
+              <input type="text" name="nickname" class="form-control" id="exampleInputEmail1"
+                     aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
       </form>
       <a class="nav-link active" aria-current="page" href="register.html">Если у вас нету аккаунта то зарегистрируйтесь по ссылке</a>
     </div>

@@ -43,9 +43,14 @@
             </form>
           </div>
           <!-- <button type="button" class="btn btn-light">Мой аккаунт</button> -->
-          <a href="register.html"><button type="button" class="btn btn-light">Зарегистрироваться</button></a>        
+          {% if user.is_authenticated %}
+          <a href=""><button type="button" class="btn btn-light">Мой аккаунт {{ user.username }}</button></a>
+          {% else %}
+          <a href=""button type="button" class="btn btn-light">Зарегистрироваться</button></a>        
         </div>
           <a href="login.html"><button type="button" class="btn btn-light" style="margin-left: -5px;">Войти</button></a> 
+          <a href="">{{ user.username }}</a>
+          {% endif %}
         </div>
       </nav>
       <!-- Navbar End -->

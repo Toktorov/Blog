@@ -1,5 +1,6 @@
 from distutils.command.upload import upload
 from django.db import models
+from users.models import User
 
 # Create your models here.
 class Post(models.Model):
@@ -9,6 +10,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class PostLike(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts_user")
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="posts_post")
 
 class Tag(models.Model):
     title = models.CharField(max_length=100)
