@@ -45,11 +45,11 @@
           <!-- <button type="button" class="btn btn-light">Мой аккаунт</button> -->
           {% if user.is_authenticated %}
           <a href=""><button type="button" class="btn btn-light">Мой аккаунт {{ user.username }}</button></a>
+          <a href="{% url 'logout' %}"><button type="button" class="btn btn-light">Выйти </button></a> 
           {% else %}
-          <a href=""button type="button" class="btn btn-light">Зарегистрироваться</button></a>        
+          <a href="{% url 'register' %}"button type="button" class="btn btn-light">Зарегистрироваться</button></a>        
         </div>
-          <a href="login.html"><button type="button" class="btn btn-light" style="margin-left: -5px;">Войти</button></a> 
-          <a href="">{{ user.username }}</a>
+          <a href="{% url 'login' %}"><button type="button" class="btn btn-light" style="margin-left: -5px;">Войти</button></a> 
           {% endif %}
         </div>
       </nav>
