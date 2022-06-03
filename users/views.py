@@ -11,10 +11,8 @@ def register(request):
         date_of_birth = request.POST.get('date_of_birth')
         tel = request.POST.get('tel')
         profile_image = request.FILES.get('profile_image')
-        image = request.FILES.get('image')
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
-        print(image)
         if password1 == password2:
             try:
                 user = User.objects.create(username=username, first_name = first_name, last_name = last_name, date_of_birth = date_of_birth, tel = tel, profile_image = profile_image)
@@ -22,9 +20,9 @@ def register(request):
                 user.save()
                 return redirect('index')
             except:
-                messages.error(request, 'Not correct some value')
+                messages.error(request, 'Неправильные данные')
         else:
-            messages.error(request, 'Not correct password')
+            messages.error(request, 'Пароли отличаются')
     return render(request, 'register.html')
 
 
@@ -35,7 +33,7 @@ def user_login(request):
             password = request.POST.get('password')
             user = User.objects.get(username=username)
             user = authenticate(username=username, password=password)
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            login(request, user)
             return redirect('index')
         except:
             messages.error("Неправильный логин или пароль")

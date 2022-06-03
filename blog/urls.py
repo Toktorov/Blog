@@ -18,7 +18,7 @@ from django.urls import path
 from posts.views import index, post_detail
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth.views import LogoutView, LoginView
+from django.contrib.auth.views import LogoutView
 from users.views import register, user_login
 
 urlpatterns = [

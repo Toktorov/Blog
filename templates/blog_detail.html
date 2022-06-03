@@ -75,35 +75,33 @@
               
             </div>
           </div>
-          <form class="row gy-2 gx-3 align-items-center" style="margin-top: 10px;">
+          <form method="POST" class="row gy-2 gx-3 align-items-center" style="margin-top: 10px;">
+            {% csrf_token %}
             <div class="col-auto">
               <label class="visually-hidden" for="autoSizingInput">Name</label>
-              <input type="text" class="form-control" id="autoSizingInput" placeholder="Ваш коментарий">
+              <input type="hidden" name = "comment" class="form-control" id="autoSizingInput">
+              <textarea name="text" class="form-control" id="" cols="30" rows="2"></textarea>
             </div>
             <div class="col-auto">
               <button type="submit" class="btn btn-primary">Оставить коментарий</button>
             </div>
           </form>
-              
+       
+              {% for comment in post.comment_post.all %}
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                  <h5 class="card-title">Admin</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">На сайте с 2020 года</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h5 class="card-title">{{comment.user}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">На сайте с {{ user.date_joined }}</h6>
+                  <p class="card-text">{{ comment.text }}</p>
+                  <h6 class="card-subtitle mb-2 text-muted">{{ comment.created }}</h6>
                   <a href="#" class="card-link">Ответить</a>
                   <a href="#" class="card-link">Посмотреть профиль</a>
                 </div>
               </div>
+              {% endfor %}
+              
           
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Admin</h5>
-              <h6 class="card-subtitle mb-2 text-muted">На сайте с 2020 года</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Ответить</a>
-              <a href="#" class="card-link">Посмотреть профиль</a>
-            </div>
-          </div>
+          
     </div>
       <!-- Detail End -->
       <!-- Comment Area Start -->
