@@ -1,4 +1,5 @@
 from email import message
+import re
 from xml.etree.ElementTree import Comment
 from django.shortcuts import redirect, render
 from .models import Post, Tag, Advert, PostLike, PostComment
@@ -39,3 +40,12 @@ def post_detail(request, id):
         'comments' : comments,
     }
     return render(request, 'blog_detail.html', context)
+
+def post_create(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        image = request.FILES.get('image')
+        post_obj = Post.objects.create(user = request.user, title = title, description = description, image = image)
+        return redirect('index')
+    return render(request, 'post_create.html')
