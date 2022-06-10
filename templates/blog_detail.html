@@ -73,9 +73,11 @@
                 <input type="hidden" name = "like">
                 <button class = "btn btn-outline-primary"style="margin-top: 18px;">Понравилось</button>
               </form>
-              
+              <a href="{% url 'post_update' post.id %}"><button class = "btn btn-outline-primary"style="margin-top: 18px;">Обновить</button></a>
+              <a href="{% url 'post_delete' post.id %}"><button class = "btn btn-outline-primary"style="margin-top: 18px;">Удалить</button></a>
             </div>
           </div>
+          
           <form method="POST" class="row gy-2 gx-3 align-items-center" style="margin-top: 10px;">
             {% csrf_token %}
             <div class="col-auto">
