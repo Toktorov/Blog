@@ -10,45 +10,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- Navbar start -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
-              <button class="btn btn-outline-light" type="submit">Поиск</button>
-            </form>
-          </div>
-          <button type="button" class="btn btn-light">Мой аккаунт</button>
-        </div>
-      </nav>
-      <!-- Navbar End -->
+  {% include 'include/header.html' %}
       <!-- Alert -->
       <div class="alert alert-secondary" role="alert">
         A simple primary alert—check it out!
@@ -68,16 +30,23 @@
           <div class="container">
             <div class="row">
               <a href="">{{ post.posts_post.all.count }} человеку нонравилось</a>
+              {% if user.is_authenticated %}
               <form method="POST">
                 {% csrf_token %}
                 <input type="hidden" name = "like">
                 <button class = "btn btn-outline-primary"style="margin-top: 18px;">Понравилось</button>
               </form>
+              {% else %}
+              <h3>Зарегистрируйтесь или войдите в свой аккаунт чтобы оставлять комментарий и лайки для постов</h3><a href="{% url 'register' %}">Зарегистрируйтесь</a>
+              <a href="{% url 'login' %}">Войти</a>
+              {% endif %}
+              {% if user.is_authenticated and user == post.user %}
               <a href="{% url 'post_update' post.id %}"><button class = "btn btn-outline-primary"style="margin-top: 18px;">Обновить</button></a>
               <a href="{% url 'post_delete' post.id %}"><button class = "btn btn-outline-primary"style="margin-top: 18px;">Удалить</button></a>
+              {% endif %}
             </div>
           </div>
-          
+          {% if user.is_authenticated %}
           <form method="POST" class="row gy-2 gx-3 align-items-center" style="margin-top: 10px;">
             {% csrf_token %}
             <div class="col-auto">
@@ -89,6 +58,7 @@
               <button type="submit" class="btn btn-primary">Оставить коментарий</button>
             </div>
           </form>
+          {% endif %}
        
               {% for comment in post.comment_post.all %}
             <div class="card" style="width: 18rem;">
