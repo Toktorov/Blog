@@ -39,3 +39,10 @@ def user_login(request):
             messages.error("Неправильный логин или пароль")
        
     return render(request, 'login.html')
+
+def profile(request, id):
+    user = User.objects.get(id = id)
+    context = {
+        'user' : user, 
+    }
+    return render(request, 'profile.html', context)

@@ -31,7 +31,7 @@
       </div>
       <!-- <button type="button" class="btn btn-light">Мой аккаунт</button> -->
       {% if user.is_authenticated %}
-      <a href=""><button type="button" class="btn btn-light">Мой аккаунт {{ user.username }}</button></a>
+      <a href="{% url 'profile' user.id %}"><button type="button" class="btn btn-light">Мой аккаунт {{ user.username }}</button></a>
       <a href="{% url 'post_create' %}"><button type="button" class="btn btn-light">Создать пост</button></a> 
       <a href="{% url 'logout' %}"><button type="button" class="btn btn-light">Выйти </button></a> 
       {% else %}
