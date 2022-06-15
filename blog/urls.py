@@ -19,7 +19,7 @@ from posts.views import index, post_detail, post_create, post_update, post_delet
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
-from users.views import register, user_login, profile
+from users.views import register, user_login, profile, update_profile, delete_profile
 
 
 urlpatterns = [
@@ -31,8 +31,11 @@ urlpatterns = [
     path('register/', register, name = "register"),
     path('login/', user_login, name = "login"),
     path('user/<int:id>', profile, name = "profile"),
+    path('user/update/<int:id>', update_profile, name = "update_profile"),
+    path('user/delete/<int:id>', delete_profile, name = "delete_profile"),
     path('logout/', LogoutView.as_view(next_page = 'index'), name = "logout"),
     path('admin/', admin.site.urls),
 ]
+#http://127.0.0.1:8000/user/2
 #http://127.0.0.1:8000/post/update/5
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

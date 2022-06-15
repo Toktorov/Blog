@@ -46,3 +46,35 @@ def profile(request, id):
         'user' : user, 
     }
     return render(request, 'profile.html', context)
+
+def update_profile(request, id):
+    user = User.objects.get(id = id)
+    if request.method == "POST":
+        username = request.POST.get('username')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        tel = request.POST.get('tel')
+        date_of_birth = request.POST.get('date_of_birth')
+        user = User.objects.get(id = id)
+        user.username = username 
+        user.fist_name = first_name
+        user.last_name = last_name
+        user.tel = tel 
+        user.date_of_birth = date_of_birth
+        user.save()
+        return redirect('profile', user.id)
+    context = {
+        'user' : user,
+    }
+    return render(request, 'profile_update.html', context)
+
+def delete_profile(request, id):
+    user = User.objects.get(id = id)
+    if request.method == "POST":
+        user = User.objects.get(id = id)
+        user.delete()
+        return redirect('index')
+    context = {
+        'user' : user
+    }
+    return render(request, 'profile_delete.html', context)
