@@ -67,7 +67,7 @@
             <div class="card-group">
               {% for post in posts %}
               <div class="card">
-                <img src="{{ post.image.url }}" class="card-img-top" alt="...">
+                <img src="{{ post.image.url }}" class="card-img-top" alt="..." style = "height:40%;">
                 <div class="card-body">
                   <a href="{% url 'post_detail' post.id %}" class=""><h5 class="card-title">{{ post.title }}</h5></a>
                   <p class="card-text">{{ post.description|truncatewords:10 }}</p>
@@ -77,9 +77,9 @@
                 </div>
               </div>
               {% endfor %}
+            </div>
+        </div>
       </div>
-    </div>
-</div>
       <!-- Card End -->
       <!-- Paginator Start -->
       <nav aria-label="Page navigation example">

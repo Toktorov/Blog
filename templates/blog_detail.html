@@ -29,7 +29,7 @@
           </p>
           <div class="container">
             <div class="row">
-              <a href="">{{ post.posts_post.all.count }} человеку нонравилось</a>
+              <a href="" class="nav-link active" style = "color: black;">{{ post.posts_post.all.count }} человеку нонравилось</a>
               {% if user.is_authenticated %}
               <form method="POST">
                 {% csrf_token %}
@@ -37,8 +37,9 @@
                 <button class = "btn btn-outline-primary"style="margin-top: 18px;">Понравилось</button>
               </form>
               {% else %}
-              <h3>Зарегистрируйтесь или войдите в свой аккаунт чтобы оставлять комментарий и лайки для постов</h3><a href="{% url 'register' %}">Зарегистрируйтесь</a>
-              <a href="{% url 'login' %}">Войти</a>
+              <h3>Зарегистрируйтесь или войдите в свой аккаунт чтобы оставлять комментарий и лайки для постов</h3>
+              <a href="{% url 'register' %}" class="nav-link active">Зарегистрируйтесь</a>
+              <a href="{% url 'login' %}" class="nav-link active">Войти</a>
               {% endif %}
               {% if user.is_authenticated and user == post.user %}
               <a href="{% url 'post_update' post.id %}"><button class = "btn btn-outline-primary"style="margin-top: 18px;">Обновить</button></a>
