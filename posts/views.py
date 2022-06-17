@@ -1,19 +1,19 @@
-from email import message
-import re
-from xml.etree.ElementTree import Comment
+from itertools import product
 from django.shortcuts import redirect, render
-from .models import Post, Tag, Advert, PostLike, PostComment
-from django.contrib.auth.models import AbstractUser
+from .models import Post, Tag, Advert, PostLike, PostComment, Alert
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
     posts = Post.objects.all()
     tags = Tag.objects.all()
     adverts = Advert.objects.all()
+    alert = Alert.objects.latest('id')
     context = {
         'posts' : posts,
         'tags' : tags,
         'adverts' : adverts,
+        'alert' : alert,
     }
     return render(request, 'index.html', context)
 
@@ -75,3 +75,13 @@ def post_delete(request, id):
         post.delete()
         return redirect('index')
     return render(request, 'post_delete.html')
+
+def post_search(request):
+    posts = Post.objects.all()
+    qury_obj = request.GET.get('key')
+    if qury_obj:
+        posts = Post.objects.filter(Q(title__icontains = qury_obj))
+    context = {
+        'posts' : posts
+    }
+    return render(request, 'post_search.html', context)

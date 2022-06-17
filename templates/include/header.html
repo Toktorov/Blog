@@ -24,8 +24,9 @@
             </ul>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
+        <form class="d-flex" action = "{% url 'post_search' %}">
+          {% csrf_token %}
+          <input class="form-control me-2" name = 'key' type="search" placeholder="Поиск" aria-label="Search">
           <button class="btn btn-outline-light" type="submit">Поиск</button>
         </form>
       </div>
@@ -42,3 +43,4 @@
     </div>
   </nav>
   <!-- Navbar End -->
+  
